@@ -20,8 +20,13 @@ def get_json():
     config = json.load(f)
     return config
 
-def get_url(avid):
-    url = "https://www.bilibili.com/video/" + avid
+def normal_url(string):
+    if string[:2] == 'av' or string[:2] == 'BV':
+        url = "https://www.bilibili.com/video/" + string
+    elif string.isdigit():
+        url = "https://www.bilibili.com/video/av" + string
+    else:
+        url = "https://www.bilibili.com/video/BV" + string
     return url
 
 if __name__ == "__main__":
