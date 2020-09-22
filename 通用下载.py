@@ -28,7 +28,7 @@ def get_url_from_file(path_aid):
     else:
         print("url list do not exist>>>>")
 
-def normal_url(string):
+def aid_to_url(string):
     if string[:2] == 'av' or string[:2] == 'BV':
         url = "https://www.bilibili.com/video/" + string
     elif string.isdigit():
