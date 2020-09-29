@@ -1,10 +1,7 @@
 from utils import tools
 from bilibili_api import video
 
-
 #def getHistory_Xml():
-
-
 
 #def UploadNew_Xml():
 

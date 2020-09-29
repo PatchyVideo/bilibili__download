@@ -7,8 +7,6 @@ def get_aid_list_from_patchy():#TODO
     response = requests.get(api_url)
     return response
 
-
-
 if __name__ == "__main__":
     url_list = get_aid_list_from_patchy()
     fw, path_cookie, path_storge = tools.get_url_list_config()
