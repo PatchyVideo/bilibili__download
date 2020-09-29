@@ -114,7 +114,7 @@ def getXml_url(url):#通过视频的url得到弹幕的url
 def getXml_file(xml_url, path):#通过弹幕的URL得到弹幕的url文件
     response = requests.get(xml_url)
     r = response.content.decode()
-    xml_name = path + str(time.asctime( time.localtime(time.time()) )) + '.xml'
+    xml_name = path + str(time.asctime( time.localtime(time.time()))) + '.xml'
     with open(xml_name, 'w') as f:
         f.write(r.text)
 
@@ -138,3 +138,25 @@ def get_url_list_config():#从config文件得到url列表,cookie的位置和存�
     path_aid = path + config["path_aid"]
     url_list = get_url_from_file(path_aid)
     return url_list, path_cookie, path_storge
+
+'''
+def get_video_count():
+    
+    return {'video_count': }
+'''
+
+'''
+def Is_video_exist(string):
+    
+    return
+'''
+
+'''
+def uplaod_backup():
+    return
+'''
+
+'''
+def updata_baidu_disk():
+    return
+'''
