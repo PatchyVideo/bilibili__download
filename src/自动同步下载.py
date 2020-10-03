@@ -9,9 +9,10 @@ def get_aid_list_from_patchy():#TODO
 
 if __name__ == "__main__":
     url_list = get_aid_list_from_patchy()
-    fw, path_cookie, path_storge = tools.get_url_list_config()
+    path_cookie = tools.get_url_list_config().path_cookie()
+    path_storge_list = tools.get_url_list_config().path_storge_list()
     threads = []
     for i in range(10):
-        threads.append(threading.Thread(target=tools.cmd_download, args=[url_list, path_cookie, path_storge, ]))
+        threads.append(threading.Thread(target=tools.cmd_download, args=[url_list, path_cookie, path_storge_list, ]))
     for t in threads:
         t.start()

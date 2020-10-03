@@ -1,9 +1,8 @@
-from utils import tools
+from utils import tool
 
 if __name__ == "__main__":
-    config = tools.get_json()
-    path_storge = config["path_storge"]
-    aid_Dict = tools.getExist_aid_Dict(path_storge)
+    path_storge_list = tool.get_url_list_config().path_storge_list()
+    aid_Dict = tool.getExist_aid_Dict(path_storge_list)
     for path_storge_single in aid_Dict:
         url = aid_Dict[path_storge_single]
-        tools.StrToJson(tools.GetCommentFromSingle(url), path_storge_single)
+        tool.StrToJson(tool.GetCommentFromSingle(url), path_storge_single)
