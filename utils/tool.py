@@ -21,7 +21,7 @@ def getExist_aid_Dict(path_storge_list):#返回已经下载的视频aid
     dict = {}
     for path_storge in path_storge_list:
         for avs in os.listdir(path_storge):
-            if '$RECYCLE.BIN' in avs:
+            if '$RECYCLE.BIN' or 'System Volume Information' in avs:
                 continue
             else:
                 path_storge_single = path_storge + avs + "\\"
@@ -33,7 +33,7 @@ def getExist_aid_list(path_storge_list):
     aid_list = []
     for path_storge in path_storge_list:
         for aid in os.listdir(path_storge):
-            if '$RECYCLE.BIN' in aid:
+            if '$RECYCLE.BIN' or 'System Volume Information' in aid:
                 continue
             elif if_video_exist(path_storge + aid):
                 aid_list.append(aid)
@@ -270,16 +270,22 @@ class web_tools():
         self.Exist_aid_list = getExist_aid_list(self.path_storge_list)
 
     def get_video_count(self):
+        time_start = time.time()
         count = len(self.Exist_aid_list)
+        print(time.time() - time_start)
         return {'video_count': count}
 
     def Is_video_exist(self, string):
+        time_start = time.time()
         if string in self.Exist_aid_list:
+            print(time.time() - time_start)
             return {'Is_video_exist':'Exist'}
         else:
+            print(time.time() - time_start)
             return {'Is_video_exist':'UnExist'}
 
     def uplaod_backup(self, string):
+        time_start = time.time()
         string = normall_avbv(string)
         url = aid_to_url(string)
         path_storge_list = get_url_list_config().path_storge_list()
@@ -292,9 +298,11 @@ class web_tools():
         if url[31:] in os.listdir(path_storge):
             print(url[33:] + '已存在，正在跳过')
         download_video(url, path_storge, path_cookie)
+        print(time.time() - time_start)
         return {"state": 'sus'}
 
     def get_comment(self, string):
+        time_start = time.time()
         path = get_file_path_from_aid(string)
         if path == 'err':
             return {'state' : 'fail'}
@@ -303,12 +311,15 @@ class web_tools():
                 if "Comment" in comment_json_file:
                     with open(path + comment_json_file, 'r') as f:
                         comment_dict = json.load(f)
+                    print(time.time() - time_start)
                 return comment_dict
 
     def dir_size(self):
         size = 0
+        time_start = time.time()
         for path_storge in self.path_storge_list:
             size = size + dirsize(path_storge)
+            print(time.time() - time_start)
         return size/1000/1000/1000
 
 
