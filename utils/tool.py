@@ -24,7 +24,7 @@ def getExist_aid_Dict(path_storge_list):#返回已经下载的视频aid
             if '$RECYCLE.BIN' in avs:
                 continue
             else:
-                path_storge_single = path_storge + avs + "/"
+                path_storge_single = path_storge + avs + "\\"
                 url = aid_to_url(avs)
                 dict[path_storge_single] = url
     return dict
@@ -110,7 +110,7 @@ def find_download(path_storge_list):#查找为下载完的视频文件
             if '$RECYCLE.BIN' in avs:
                 continue
             else:
-                path_storge_single = path_storge + avs + "/"
+                path_storge_single = path_storge + avs + "\\"
                 for file in os.listdir(path_storge_single):
                     if "download" in file:
                         url = aid_to_url(avs)
@@ -203,7 +203,7 @@ def get_file_path_from_aid(aid):
             if '$RECYCLE.BIN' in file:
                 continue
             elif aid in file:
-                path = path_storge + file + '/'
+                path = path_storge + file + '\\'
                 return path
                 break
     return 'err'
