@@ -21,9 +21,7 @@ def getExist_aid_Dict(path_storge_list):#返回已经下载的视频aid
     dict = {}
     for path_storge in path_storge_list:
         for avs in os.listdir(path_storge):
-            if '$RECYCLE.BIN' or 'System Volume Information' in avs:
-                continue
-            else:
+            if if_video_exist(path_storge + avs):
                 path_storge_single = path_storge + avs + "\\"
                 url = aid_to_url(avs)
                 dict[path_storge_single] = url
@@ -33,11 +31,9 @@ def getExist_aid_list(path_storge_list):
     aid_list = []
     for path_storge in path_storge_list:
         for aid in os.listdir(path_storge):
-            if '$RECYCLE.BIN' or 'System Volume Information' in aid:
-                continue
-            elif if_video_exist(path_storge + aid):
+            if if_video_exist(path_storge + aid):
                 aid_list.append(aid)
-        return aid_list
+    return aid_list
 
 def aid_to_url(string):#将av/BV号转为url
     if string[:2] == 'av' or string[:2] == 'BV':
