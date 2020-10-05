@@ -1,7 +1,4 @@
-import sys
-print(sys.path)
 from flask import Flask
-
 from utils.tool import web_tools
 
 app = Flask(__name__)
@@ -24,6 +21,10 @@ def get_comment(string):
 
 @app.route("/")
 def root():
+    return 'api'
+
+@app.route("/above")
+def above():
     return {"size": str(web_tools().dir_size()) + 'GB'
             }
 '''
