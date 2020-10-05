@@ -145,7 +145,7 @@ def StrToJson(comment_list, path):#将json列表存到文件中
             print("ShiXiao")
     else:
         comment_json = json.dumps(comment_list)
-        json_name = path + str(time.asctime( time.localtime(time.time()) )) + 'Comment'
+        json_name = path + str(time.asctime( time.localtime(time.time()) )) + 'Comment.json'
         with open(json_name, 'w') as f:
             f.write(comment_json)
 
