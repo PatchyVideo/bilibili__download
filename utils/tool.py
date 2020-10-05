@@ -137,11 +137,11 @@ def GetCommentFromSingle(str):#从单个视频获取评论,返回一个列表
 
 def time_str():
     time_obj = time.localtime(time.time())
-    str = str(time_obj.tm_yday) + ','
-    str = str + str(time_obj.tm_mon) + '.'
-    str = str + str(time_obj.tm_yday) + ','
-    str = str + str(time_obj.tm_hour)
-    return str
+    str_t = str(time_obj.tm_yday) + ','
+    str_t = str_t + str(time_obj.tm_mon) + '.'
+    str_t = str_t + str(time_obj.tm_yday) + ','
+    str_t = str_t + str(time_obj.tm_hour)
+    return str_t
 
 def StrToJson(comment_list, path):#将json列表存到文件中
     for path_file in os.listdir(path):
