@@ -137,7 +137,7 @@ def GetCommentFromSingle(str):#从单个视频获取评论,返回一个列表
 
 def time_str():
     time_obj = time.localtime(time.time())
-    str_t = str(time_obj.tm_yday) + ','
+    str_t = str(time_obj.tm_year) + ','
     str_t = str_t + str(time_obj.tm_mon) + '.'
     str_t = str_t + str(time_obj.tm_yday) + ','
     str_t = str_t + str(time_obj.tm_hour)
@@ -154,8 +154,9 @@ def StrToJson(comment_list, path):#将json列表存到文件中
     else:
         comment_json = json.dumps(comment_list)
         json_name = path + time_str() + 'Comment.json'
-        with open(json_name, 'w') as f:
+        with open(json_name, 'w', encoding='utf-8') as f:
             f.write(comment_json)
+            print(path + 'wancheng')
 
 def getXml_url(url):#通过视频的url得到弹幕的url
     headers = {"User-Agent": "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Mobile Safari/537.36"}
@@ -179,7 +180,7 @@ def getXml_file(xml_file, path):#通过弹幕的URL得到弹幕的url文件
             if ".xml" in path_file:
                 print(path + path_file)
                 os.remove(path + path_file)
-        with open(xml_name, 'w') as f:
+        with open(xml_name, 'w', encoding='utf-8') as f:
             f.write(xml_file)
 
 def get_url_from_file(path_aid):#从txt文档读取aid列表
