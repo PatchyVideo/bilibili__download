@@ -135,6 +135,14 @@ def GetCommentFromSingle(str):#从单个视频获取评论,返回一个列表
         comment_list.append(single)
     return json.dumps(comment_list)
 
+def time_str():
+    time_obj = time.localtime(time.time())
+    str = str(time_obj.tm_yday) + ','
+    str = str + str(time_obj.tm_mon) + '.'
+    str = str + str(time_obj.tm_yday) + ','
+    str = str + str(time_obj.tm_hour)
+    return str
+
 def StrToJson(comment_list, path):#将json列表存到文件中
     for path_file in os.listdir(path):
         if "Comment" in path_file:
@@ -145,8 +153,7 @@ def StrToJson(comment_list, path):#将json列表存到文件中
             print("ShiXiao")
     else:
         comment_json = json.dumps(comment_list)
-        json_name = path + str(time.asctime( time.localtime(time.time()) )) + 'Comment.json'
-        json_name.replace(':', ' ', 4)
+        json_name = path + time_str() + 'Comment.json'
         with open(json_name, 'w') as f:
             f.write(comment_json)
 
@@ -167,8 +174,7 @@ def getXml_file(xml_file, path):#通过弹幕的URL得到弹幕的url文件
     if xml_file == 'err':
         print("lost")
     else:
-        xml_name = path + str(time.asctime( time.localtime(time.time()))) + '.xml'
-        xml_name.replace(':', ' ', 4)
+        xml_name = path + time_str() + '.xml'
         for path_file in os.listdir(path):
             if ".xml" in path_file:
                 print(path + path_file)
