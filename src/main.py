@@ -1,4 +1,7 @@
+import sys
+print(sys.path)
 from flask import Flask
+
 from utils.tool import web_tools
 
 app = Flask(__name__)

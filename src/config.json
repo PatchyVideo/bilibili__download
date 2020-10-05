@@ -1,4 +1,4 @@
 {
-	"path_storge_list": ["/home/wang/data/1/", "/home/wang/data/2/", "/home/wang/data/3/"],
-	"path_storge_list_tr": ["D:\\视频备份\\", "H:\\视频备份\\", "I:\\视频备份\\"]
+	"path_storge_list_test": ["/home/wang/data/1/", "/home/wang/data/2/", "/home/wang/data/3/"],
+	"path_storge_list": ["D:\\", "H:\\", "I:\\"]
 }
