@@ -272,7 +272,6 @@ class web_tools():
     def get_video_count(self):
         time_start = time.time()
         count = len(self.Exist_aid_list)
-        print(self.Exist_aid_list)
         print(time.time() - time_start)
         return {'video_count': count}
 
