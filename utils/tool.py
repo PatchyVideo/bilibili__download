@@ -284,7 +284,6 @@ class web_tools():
                 if "Comment" in comment_json_file:
                     with open(path + comment_json_file, 'r') as f:
                         comment_dict = json.load(f)
-                        #print(comment_dict)
                 return comment_dict
 
     def dir_size(self):
