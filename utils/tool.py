@@ -146,7 +146,7 @@ def StrToJson(comment_list, path):#将json列表存到文件中
     else:
         comment_json = json.dumps(comment_list)
         json_name = path + str(time.asctime( time.localtime(time.time()) )) + 'Comment.json'
-        json_name.replace(':', '.')
+        json_name.replace(':', ' ', 4)
         with open(json_name, 'w') as f:
             f.write(comment_json)
 
@@ -168,7 +168,7 @@ def getXml_file(xml_file, path):#通过弹幕的URL得到弹幕的url文件
         print("lost")
     else:
         xml_name = path + str(time.asctime( time.localtime(time.time()))) + '.xml'
-        xml_name.replace(':', '.')
+        xml_name.replace(':', ' ', 4)
         for path_file in os.listdir(path):
             if ".xml" in path_file:
                 print(path + path_file)
