@@ -21,16 +21,21 @@ def getExist_aid_Dict(path_storge_list):#返回已经下载的视频aid
     dict = {}
     for path_storge in path_storge_list:
         for avs in os.listdir(path_storge):
-            path_storge_single = path_storge + avs + "/"
-            url = aid_to_url(avs)
-            dict[path_storge_single] = url
+            if '$RECYCLE.BIN' in avs:
+                continue
+            else:
+                path_storge_single = path_storge + avs + "/"
+                url = aid_to_url(avs)
+                dict[path_storge_single] = url
     return dict
 
 def getExist_aid_list(path_storge_list):
     aid_list = []
     for path_storge in path_storge_list:
         for aid in os.listdir(path_storge):
-            if if_video_exist(path_storge + aid):
+            if '$RECYCLE.BIN' in aid:
+                continue
+            elif if_video_exist(path_storge + aid):
                 aid_list.append(aid)
         return aid_list
 
@@ -102,11 +107,14 @@ def find_download(path_storge_list):#查找为下载完的视频文件
     dict = {}
     for path_storge in path_storge_list:
         for avs in os.listdir(path_storge):
-            path_storge_single = path_storge + avs + "/"
-            for file in os.listdir(path_storge_single):
-                if "download" in file:
-                    url = aid_to_url(avs)
-                    dict[url] = path_storge_single
+            if '$RECYCLE.BIN' in avs:
+                continue
+            else:
+                path_storge_single = path_storge + avs + "/"
+                for file in os.listdir(path_storge_single):
+                    if "download" in file:
+                        url = aid_to_url(avs)
+                        dict[url] = path_storge_single
     return dict
 
 def GetCommentFromSingle(str):#从单个视频获取评论,返回一个列表
@@ -192,7 +200,9 @@ def get_file_path_from_aid(aid):
     path_storge_list = get_url_list_config().path_storge_list()
     for path_storge in path_storge_list:
         for file in os.listdir(path_storge):
-            if aid in file:
+            if '$RECYCLE.BIN' in file:
+                continue
+            elif aid in file:
                 path = path_storge + file + '/'
                 return path
                 break
