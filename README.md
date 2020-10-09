@@ -27,7 +27,7 @@ using https://github.com/Passkou/bilibili_api
 
 返回所有视频所占空间和硬盘剩余容量
 
-#TODO
+# TODO
 api速度过慢，需建立数据库
 
 定时启动更新代码
@@ -38,5 +38,5 @@ python os.listdir() 遇到权限文件报错
 
 通过aid将视频通过百度云api上传到网盘
 
-前端
+周报及前端
 
